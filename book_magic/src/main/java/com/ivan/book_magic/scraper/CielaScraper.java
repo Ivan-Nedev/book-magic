@@ -5,12 +5,14 @@ import com.ivan.book_magic.model.BookOffer;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class CielaScraper implements BookScraper {
 
     private final CielaAuthorFinder authorFinder = new CielaAuthorFinder();
@@ -94,6 +96,10 @@ public class CielaScraper implements BookScraper {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public String getExtractAuthorNameFromAuthorPage(String authorUrl) {
+        return extractAuthorNameFromAuthorPage(authorUrl);
     }
     private void politeSleep() {
         try {
