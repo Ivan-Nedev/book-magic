@@ -27,7 +27,7 @@ public class CielaScraper implements BookScraper {
         String authorName = extractAuthorNameFromAuthorPage(authorUrl);
 
         return bookUrls.stream()
-                .limit(5)
+                .limit(7)
                 .map(url -> this.scrapeProductPage(url, authorSlug, authorName))
                 .flatMap(opt -> opt.stream())
                 .toList();
