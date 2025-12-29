@@ -9,7 +9,6 @@ import com.ivan.book_magic.scraper.CielaAuthorFinder;
 import com.ivan.book_magic.scraper.CielaScraper;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,14 +19,17 @@ public class BookDiscoveryService {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
     private final CielaScraper scraper;
+    private final EmailNotificationService emailNotificationService;
     // две допълнителни заявки
     private final CielaAuthorFinder authorFinder = new CielaAuthorFinder();
 
 
-    public BookDiscoveryService(AuthorRepository authorRepository, BookRepository bookRepository, CielaScraper scraper) {
+    public BookDiscoveryService(AuthorRepository authorRepository, BookRepository bookRepository,
+                                CielaScraper scraper, EmailNotificationService emailNotificationService) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.scraper = scraper;
+        this.emailNotificationService = emailNotificationService;
     }
 
     public void discoverNewBooks(String authorSlug) {
@@ -58,6 +60,15 @@ public class BookDiscoveryService {
                         offer.getImageUrl()
                 );
                 bookRepository.save(book);
+                System.out.println("NEW BOOK: " + offer.getTitle() + " by " + offer.getAuthorName());
+
+                emailNotificationService.sendNewBookNotification(
+                        "book.lover.stalker@gmail.com",
+                        author.getName(),
+                        offer.getTitle(),
+                        offer.getImageUrl(),
+                        offer.getProductUrl()
+                );
                 System.out.println("NEW BOOK: " + offer.getTitle() + " by " + offer.getAuthorName());
             }
         }
