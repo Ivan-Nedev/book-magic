@@ -8,7 +8,8 @@ Users can browse books by author slug and view availability information.
 
 The goal is to provide a centralized platform for browsing books, receiving notifications when preferred books become available, tracking availability, and comparing offers.
 
-Technologies: Java, Spring Boot, SQL
-Status: In progress – core backend functionality implemented, additional features planned.
+Technologies: **Java**, **Spring Boot**, **SQL**
+
+Status: In progress – some of core backend functionality implemented, additional features planned.
 
 
