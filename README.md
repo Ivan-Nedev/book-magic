@@ -1,8 +1,14 @@
 # book-magic
 
-Book Magic is a web application that helps users discover books by automatically collecting and organizing offers from different online bookstores.
-It allows users to browse books by author and title, compare availability and prices, and stay informed about new or updated book offers in one place.
+Book Magic is a web application that aggregates book offers from multiple online bookstores into a single platform.
 
-Still in progress. So far, the project includes a backend built with Spring Boot, a relational database with books and authors, and a scraping service that fetches book data from external sources and stores it in the database.
+The current version includes a Spring Boot backend, a relational database for books and authors, and a scraping service that collects book data from external sources and stores it in the database.
+
+Users can browse books by author slug and view availability information.
 
 The goal is to provide a centralized platform for browsing books, receiving notifications when preferred books become available, tracking availability, and comparing offers.
+
+Technologies: Java, Spring Boot, SQL
+Status: In progress – core backend functionality implemented, additional features planned.
+
+
